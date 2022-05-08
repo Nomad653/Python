@@ -17,76 +17,57 @@ print(st.title("Titanik faciəsindən sağ çıxa bilərdinizmi?"))
 #name = st.text_input("Adınız:")
 
 # %%
-data = pd.read_csv("train.csv")
-
-# %%
-
-
+@st.cache
+def load_data():
+	data = pd.read_csv("train.csv")
 
 
+	le = LabelEncoder()
+
+	data["Sex"] = le.fit_transform(data["Sex"])
+
+	# %%
+	#data["Age"] = data["Age"].dropna(inplace=True)
+
+	# %%
+	data.drop("Cabin",axis=1,inplace=True)
+
+	# %%
+	data["Embarked"] = le.fit_transform(data["Embarked"])
+
+	# %%
+	data.drop(["Name","Ticket"],inplace=True,axis=1)
+
+	# %%
+	data["Age"].dropna(axis=0,inplace=True)
+
+	# %%
+	data.dropna(inplace=True)
+
+	# %%
+	data.drop("PassengerId",axis=1,inplace=True)
+
+	# %%
 
 
+	# %%
+	x =  data.drop(["Survived","Parch","Fare","Embarked"],axis=1)
+	y = data["Survived"]
 
-
-# %%
-
-
-# %%
-
-
-
-# %%
-
-
-# %%
-
-
-le = LabelEncoder()
-
-data["Sex"] = le.fit_transform(data["Sex"])
-
-# %%
-#data["Age"] = data["Age"].dropna(inplace=True)
-
-# %%
-data.drop("Cabin",axis=1,inplace=True)
-
-# %%
-data["Embarked"] = le.fit_transform(data["Embarked"])
-
-# %%
-data.drop(["Name","Ticket"],inplace=True,axis=1)
-
-# %%
-data["Age"].dropna(axis=0,inplace=True)
-
-# %%
-data.dropna(inplace=True)
-
-# %%
-data.drop("PassengerId",axis=1,inplace=True)
-
-# %%
-
-
-# %%
-x =  data.drop(["Survived","Parch","Fare","Embarked"],axis=1)
-y = data["Survived"]
-
-# %%
+	# %%
 
 
 
-# %%
-X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=101)
+	# %%
+	X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=101)
 
 
-# %%
+	# %%
 
 
-LR = LogisticRegression()
+	LR = LogisticRegression()
 
-LR.fit(X_train,y_train)
+	LR.fit(X_train,y_train)
 
 # %%
 #
