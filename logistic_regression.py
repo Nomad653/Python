@@ -18,7 +18,7 @@ print(st.title("Titanik faciəsindən sağ çıxa bilərdinizmi?"))
 
 # %%
 @st.cache
-def load_data():
+def load_data(user_data):
 	data = pd.read_csv("train.csv")
 
 
@@ -61,13 +61,14 @@ def load_data():
 	# %%
 	X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=101)
 
-
-	# %%
-	load_data()
-
 	LR = LogisticRegression()
 
-	return LR.fit(X_train,y_train)
+	LR.fit(X_train,y_train)
+	return LR.predict(user_data)
+	# %%
+	
+
+	
 
 # %%
 #
@@ -91,8 +92,8 @@ input_data = {
 }
 df = pd.DataFrame(data=input_data,index=[0])
 
-prediction = LR.predict(df)
-predict_probability = LR.predict_proba(df)
+prediction = load_data(df)
+predict_probability = prediction.predict_proba(df)
 if prediction[0] == 1:
 	st.subheader('{} % ehtimalla sağ qalardınız.'.format(round(predict_probability[0][1]*100 , 3)))
 else:
