@@ -12,81 +12,58 @@ from sklearn.metrics import classification_report
 # Data yuklenir
 # 
 print(st.title("Titanik faciəsindən sağ çıxa bilərdinizmi?"))
-
-
-#name = st.text_input("Adınız:")
-
-# %%
-data = pd.read_csv("train.csv")
-
-# %%
+@st.cache
+def load_data():
+	data = pd.read_csv("train.csv")
 
 
 
+	le = LabelEncoder()
+
+	data["Sex"] = le.fit_transform(data["Sex"])
+
+	# %%
+	#data["Age"] = data["Age"].dropna(inplace=True)
+
+	# %%
+	data.drop("Cabin",axis=1,inplace=True)
+
+	# %%
+	data["Embarked"] = le.fit_transform(data["Embarked"])
+
+	# %%
+	data.drop(["Name","Ticket"],inplace=True,axis=1)
+
+	# %%
+	data["Age"].dropna(axis=0,inplace=True)
+
+	# %%
+	data.dropna(inplace=True)
+
+	# %%
+	data.drop("PassengerId",axis=1,inplace=True)
+
+	# %%
+
+
+	# %%
+	x =  data.drop(["Survived","Parch","Fare","Embarked"],axis=1)
+	y = data["Survived"]
+
+	# %%
 
 
 
+	# %%
+	X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=101)
 
 
-# %%
+	# %%
 
 
-# %%
+	LR = LogisticRegression()
 
-
-
-# %%
-
-
-# %%
-
-
-le = LabelEncoder()
-
-data["Sex"] = le.fit_transform(data["Sex"])
-
-# %%
-#data["Age"] = data["Age"].dropna(inplace=True)
-
-# %%
-data.drop("Cabin",axis=1,inplace=True)
-
-# %%
-data["Embarked"] = le.fit_transform(data["Embarked"])
-
-# %%
-data.drop(["Name","Ticket"],inplace=True,axis=1)
-
-# %%
-data["Age"].dropna(axis=0,inplace=True)
-
-# %%
-data.dropna(inplace=True)
-
-# %%
-data.drop("PassengerId",axis=1,inplace=True)
-
-# %%
-
-
-# %%
-x =  data.drop(["Survived","Parch","Fare","Embarked"],axis=1)
-y = data["Survived"]
-
-# %%
-
-
-
-# %%
-X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=101)
-
-
-# %%
-
-
-LR = LogisticRegression()
-
-LR.fit(X_train,y_train)
+	LR.fit(X_train,y_train)
 
 # %%
 #
@@ -97,7 +74,7 @@ sibling = st.slider("Sizinlə birlikdə olan ailə üzvlərinizin sayı",1,10,1)
 gender = st.selectbox("Cins", options = ["Kişi","Qadın"] )
 p_class = st.selectbox("Sərnişin sinfi",options=['Birinci sinif' , 'İkinci sinif' , 'Üçüncü sinif'])
 gender = 1 if gender =="Kişi" else 0
-st.button("Hesabla")
+
 if p_class =="Birinci sinif":
     p_class = 1
 elif p_class =="İkinci sinif":
@@ -109,7 +86,7 @@ input_data = {
     'Pclass':p_class,"Sex":gender,"Age":age,"SibSp":sibling
 }
 df = pd.DataFrame(data=input_data,index=[0])
-
+if 
 prediction = LR.predict(df)
 predict_probability = LR.predict_proba(df)
 if prediction[0] == 1:
