@@ -95,9 +95,9 @@ df = pd.DataFrame(data=input_data,index=[0])
 prediction = load_data(df)
 predict_probability = LogisticRegression.predict_proba(df)
 if prediction[0] == 1:
-	st.subheader('sağ qalardınız.') #.format(round(predict_probability[0][1]*100 , 3)))
+	st.subheader('{} ehtimalla sağ qalardınız.'.format(round(predict_probability[0][1]*100 , 3)))
 else:
-	st.subheader(' ölərdiniz') #.format(round(predict_probability[0][0]*100 , 3)))
+	st.subheader('{} ehtimalla ölərdiniz'.format(round(predict_probability[0][0]*100 , 3)))
 # %%
 
 #print(classification_report(y_test,prediction))
