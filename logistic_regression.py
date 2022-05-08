@@ -62,9 +62,9 @@ def load_data(user_data):
 	X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=101)
 
 	
-
+	LR = LogisticRegression()
 	
-	return LR = LogisticRegression(),LR.fit(X_train,y_train),LR.predict(user_data)
+	return LR,LR.fit(X_train,y_train),LR.predict(user_data)
 	# %%
 	
 
@@ -93,7 +93,7 @@ input_data = {
 df = pd.DataFrame(data=input_data,index=[0])
 
 prediction = load_data(df)
-predict_probability = LogisticRegression.predict_proba(df)
+predict_probability = prediction[0].predict_proba(df)
 if prediction[0] == 1:
 	st.subheader('{} ehtimalla sağ qalardınız.'.format(round(predict_probability[0][1]*100 , 3)))
 else:
