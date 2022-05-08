@@ -80,26 +80,27 @@ sibling = st.slider("Sizinlə birlikdə olan ailə üzvlərinizin sayı",1,10,1)
 gender = st.selectbox("Cins", options = ["Kişi","Qadın"] )
 p_class = st.selectbox("Sərnişin sinfi",options=['Birinci sinif' , 'İkinci sinif' , 'Üçüncü sinif'])
 gender = 1 if gender =="Kişi" else 0
-st.button("Hesabla")
-if p_class =="Birinci sinif":
-    p_class = 1
-elif p_class =="İkinci sinif":
-    p_class = 2
-else:
-    p_class = 3
+st.button("Hesabla",on_click=start())
+def start():
+	if p_class =="Birinci sinif":
+	    p_class = 1
+	elif p_class =="İkinci sinif":
+	    p_class = 2
+	else:
+	    p_class = 3
 
-input_data = {
-    'Pclass':p_class,"Sex":gender,"Age":age,"SibSp":sibling
-}
-df = pd.DataFrame(data=input_data,index=[0])
+	input_data = {
+	    'Pclass':p_class,"Sex":gender,"Age":age,"SibSp":sibling
+	}
+	df = pd.DataFrame(data=input_data,index=[0])
 
-loaded_data = load_data()
-prediction = predict_data(loaded_data,df)
-predict_probability = loaded_data.predict_proba(df)
-if prediction[0] == 1:
-	st.subheader('{} ehtimalla sağ qalardınız.'.format(round(predict_probability[0][1]*100 , 3)))
-else:
-	st.subheader('{} ehtimalla ölərdiniz'.format(round(predict_probability[0][0]*100 , 3)))
+	loaded_data = load_data()
+	prediction = predict_data(loaded_data,df)
+	predict_probability = loaded_data.predict_proba(df)
+	if prediction[0] == 1:
+		st.subheader('{} ehtimalla sağ qalardınız.'.format(round(predict_probability[0][1]*100 , 3)))
+	else:
+		st.subheader('{} ehtimalla ölərdiniz'.format(round(predict_probability[0][0]*100 , 3)))
 # %%
 
 #print(classification_report(y_test,prediction))
