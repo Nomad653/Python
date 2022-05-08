@@ -15,7 +15,11 @@ print(st.title("Titanik faciəsindən sağ çıxa bilərdinizmi?"))
 
 
 #name = st.text_input("Adınız:")
-
+age = 0
+sibling = 0 
+gender = 0
+p_class = 0 
+gender = 0
 # %%
 @st.cache
 def load_data():
