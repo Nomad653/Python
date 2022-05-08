@@ -97,7 +97,7 @@ sibling = st.slider("Sizinlə birlikdə olan ailə üzvlərinizin sayı",1,10,1)
 gender = st.selectbox("Cins", options = ["Kişi","Qadın"] )
 p_class = st.selectbox("Sərnişin sinfi",options=['Birinci sinif' , 'İkinci sinif' , 'Üçüncü sinif'])
 gender = 1 if gender =="Kişi" else 0
-
+st.button("Hesabla")
 if p_class =="Birinci sinif":
     p_class = 1
 elif p_class =="İkinci sinif":
