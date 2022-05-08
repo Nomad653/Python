@@ -15,10 +15,7 @@ print(st.title("Titanik faciəsindən sağ çıxa bilərdinizmi?"))
 
 
 #name = st.text_input("Adınız:")
-age = st.slider("Yaşınız", 1, 100,1)
-sibling = st.slider("Sizinlə birlikdə olan ailə üzvlərinizin sayı",1,10,1)
-gender = st.selectbox("Cins", options = ["Kişi","Qadın"] )
-p_class = st.selectbox("Sərnişin sinfi",options=['Birinci sinif' , 'İkinci sinif' , 'Üçüncü sinif'])
+
 # %%
 data = pd.read_csv("train.csv")
 
@@ -95,6 +92,10 @@ LR.fit(X_train,y_train)
 #
 
 # %%
+age = st.slider("Yaşınız", 1, 100,1)
+sibling = st.slider("Sizinlə birlikdə olan ailə üzvlərinizin sayı",1,10,1)
+gender = st.selectbox("Cins", options = ["Kişi","Qadın"] )
+p_class = st.selectbox("Sərnişin sinfi",options=['Birinci sinif' , 'İkinci sinif' , 'Üçüncü sinif'])
 gender = 1 if gender =="Kişi" else 0
 
 if p_class =="Birinci sinif":
