@@ -70,7 +70,7 @@ def load_data():
 	LR.fit(X_train,y_train)
 	return LR
 	# %%
-	
+loaded_data = load_data()	
 
 def predict_data(f1,user_input):
 	result = f1.predict(user_input)
@@ -80,7 +80,7 @@ def predict_data(f1,user_input):
 
 # %%
 
-def start():
+def start(loaded_data):
 	if p_class =="Birinci sinif":
 	    p_class = 1
 	elif p_class =="İkinci sinif":
@@ -93,7 +93,7 @@ def start():
 	}
 	df = pd.DataFrame(data=input_data,index=[0])
 
-	loaded_data = load_data()
+	
 	prediction = predict_data(loaded_data,df)
 	predict_probability = loaded_data.predict_proba(df)
 	if prediction[0] == 1:
@@ -108,7 +108,7 @@ gender = st.selectbox("Cins", options = ["Kişi","Qadın"] )
 p_class = st.selectbox("Sərnişin sinfi",options=['Birinci sinif' , 'İkinci sinif' , 'Üçüncü sinif'])
 gender = 1 if gender =="Kişi" else 0
 if st.button("Hesabla"):
-	start()
+	start(loaded_data)
 
 #print(classification_report(y_test,prediction))
 
