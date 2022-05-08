@@ -4,7 +4,10 @@ import os
 os.system('pip install scikit-learn')
 import numpy as np
 import streamlit as st
-
+from sklearn.preprocessing import LabelEncoder
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import classification_report
 # %% [markdown]
 # Data yuklenir
 # 
@@ -39,7 +42,7 @@ data = pd.read_csv("train.csv")
 
 
 # %%
-from sklearn.preprocessing import LabelEncoder
+
 
 le = LabelEncoder()
 
@@ -74,7 +77,7 @@ x =  data.drop(["Survived","Parch","Fare","Embarked"],axis=1)
 y = data["Survived"]
 
 # %%
-from sklearn.model_selection import train_test_split
+
 
 
 # %%
@@ -82,7 +85,7 @@ X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_
 
 
 # %%
-from sklearn.linear_model import LogisticRegression
+
 
 LR = LogisticRegression()
 
@@ -113,7 +116,7 @@ if prediction[0] == 1:
 else:
 	st.subheader('{} % ehtimalla ölərdiniz'.format(round(predict_probability[0][0]*100 , 3)))
 # %%
-from sklearn.metrics import classification_report
+
 #print(classification_report(y_test,prediction))
 
 # %%
