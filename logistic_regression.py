@@ -93,7 +93,7 @@ input_data = {
 df = pd.DataFrame(data=input_data,index=[0])
 
 prediction = load_data(df)
-predict_probability = prediction.predict_proba(df)
+#predict_probability = prediction.predict_proba(df)
 if prediction[0] == 1:
 	st.subheader('sağ qalardınız.') #.format(round(predict_probability[0][1]*100 , 3)))
 else:
