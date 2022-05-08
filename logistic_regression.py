@@ -95,7 +95,7 @@ df = pd.DataFrame(data=input_data,index=[0])
 
 load_data()
 prediction = predict_data(load_data(),df)
-predict_probability = prediction[0].predict_proba(df)
+predict_probability = load_data.predict_proba(df)
 if prediction[0] == 1:
 	st.subheader('{} ehtimalla sağ qalardınız.'.format(round(predict_probability[0][1]*100 , 3)))
 else:
