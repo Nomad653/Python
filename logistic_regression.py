@@ -65,7 +65,7 @@ def load_data():
 	# %%
 
 
-	LR = LogisticRegression()
+	global LR = LogisticRegression()
 
 	LR.fit(X_train,y_train)
 
