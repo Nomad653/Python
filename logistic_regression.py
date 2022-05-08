@@ -1,7 +1,7 @@
 # %%
 import pandas as pd
 import os 
-os.system('sudo pip install scikit-learn')
+os.system('pip install scikit-learn')
 import numpy as np
 import streamlit as st
 
