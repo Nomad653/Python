@@ -1,7 +1,6 @@
 # %%
 import pandas as pd
 import os 
-os.system('pip install scikit-learn')
 import numpy as np
 import streamlit as st
 from sklearn.preprocessing import LabelEncoder
@@ -18,7 +17,8 @@ print(st.title("Titanik faciəsindən sağ çıxa bilərdinizmi?"))
 age = 0
 sibling = 0 
 gender = 0
-p_class = 0 
+p_class = 0
+p_class = 0
 gender = 0
 # %%
 @st.cache
@@ -65,7 +65,7 @@ def load_data():
 	# %%
 	X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=101)
 
-	
+
 	LR = LogisticRegression()
 	LR.fit(X_train,y_train)
 	return LR
@@ -81,19 +81,18 @@ def predict_data(f1,user_input):
 # %%
 
 def start(loaded_data):
-	if p_class =="Birinci sinif":
-	    p_class = 1
+	global p_class
+	global gender
+	global age
+	global sibling
+	if  p_class =="Birinci sinif":
+		p_class = 1
 	elif p_class =="İkinci sinif":
-	    p_class = 2
+		p_class = 2
 	else:
-	    p_class = 3
-
-	input_data = {
-	    'Pclass':p_class,"Sex":gender,"Age":age,"SibSp":sibling
-	}
+		p_class = 3
+	input_data = {'Pclass':p_class,"Sex":gender,"Age":age,"SibSp":sibling}
 	df = pd.DataFrame(data=input_data,index=[0])
-
-	
 	prediction = predict_data(loaded_data,df)
 	predict_probability = loaded_data.predict_proba(df)
 	if prediction[0] == 1:
