@@ -75,12 +75,7 @@ def predict_data(f1,user_input):
 #
 
 # %%
-age = st.slider("Yaşınız", 1, 100,1)
-sibling = st.slider("Sizinlə birlikdə olan ailə üzvlərinizin sayı",1,10,1)
-gender = st.selectbox("Cins", options = ["Kişi","Qadın"] )
-p_class = st.selectbox("Sərnişin sinfi",options=['Birinci sinif' , 'İkinci sinif' , 'Üçüncü sinif'])
-gender = 1 if gender =="Kişi" else 0
-st.button("Hesabla",on_click=start())
+
 def start():
 	if p_class =="Birinci sinif":
 	    p_class = 1
@@ -102,6 +97,14 @@ def start():
 	else:
 		st.subheader('{} ehtimalla ölərdiniz'.format(round(predict_probability[0][0]*100 , 3)))
 # %%
+
+age = st.slider("Yaşınız", 1, 100,1)
+sibling = st.slider("Sizinlə birlikdə olan ailə üzvlərinizin sayı",1,10,1)
+gender = st.selectbox("Cins", options = ["Kişi","Qadın"] )
+p_class = st.selectbox("Sərnişin sinfi",options=['Birinci sinif' , 'İkinci sinif' , 'Üçüncü sinif'])
+gender = 1 if gender =="Kişi" else 0
+if st.button("Hesabla"):
+	start()
 
 #print(classification_report(y_test,prediction))
 
