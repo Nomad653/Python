@@ -96,9 +96,9 @@ def start(loaded_data):
 	prediction = predict_data(loaded_data,df)
 	predict_probability = loaded_data.predict_proba(df)
 	if prediction[0] == 1:
-		st.subheader('{} ehtimalla sağ qalardınız.'.format(round(predict_probability[0][1]*100 , 3)))
+		st.subheader('{}% ehtimalla sağ qalardınız.'.format(round(predict_probability[0][1]*100 , 3)))
 	else:
-		st.subheader('{} ehtimalla ölərdiniz'.format(round(predict_probability[0][0]*100 , 3)))
+		st.subheader('{}% ehtimalla ölərdiniz'.format(round(predict_probability[0][0]*100 , 3)))
 # %%
 
 age = st.slider("Yaşınız", 1, 100,1)
