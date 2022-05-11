@@ -12,15 +12,13 @@ from sklearn.metrics import classification_report
 # 
 print(st.title("Titanik faciəsindən sağ çıxa bilərdinizmi?"))
 
-
-#name = st.text_input("Adınız:")
 age = 0
 sibling = 0 
 gender = 0
 p_class = 0
 p_class = 0
 gender = 0
-# %%
+
 @st.cache
 def load_data():
 	data = pd.read_csv("train.csv")
@@ -30,8 +28,7 @@ def load_data():
 
 	data["Sex"] = le.fit_transform(data["Sex"])
 
-	# %%
-	#data["Age"] = data["Age"].dropna(inplace=True)
+
 
 	# %%
 	data.drop("Cabin",axis=1,inplace=True)
