@@ -11,8 +11,6 @@ from sklearn.metrics import classification_report
 # Data yuklenir
 # 
 
-image = Image.open("Titanic.jpg")
-st.image(image=image,height=50,width=1000)
 print(st.title("Titanik faciəsindən sağ çıxa bilərdinizmi?"))
 
 age = 0
