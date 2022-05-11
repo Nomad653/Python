@@ -10,6 +10,9 @@ from sklearn.metrics import classification_report
 # %% [markdown]
 # Data yuklenir
 # 
+
+image = Image.open("Titanic.jpg")
+st.image(image,width="1000")
 print(st.title("Titanik faciəsindən sağ çıxa bilərdinizmi?"))
 
 age = 0
@@ -18,8 +21,7 @@ gender = 0
 p_class = 0
 p_class = 0
 gender = 0
-image = Image.open("Titanic.jpg")
-st.image(image)
+
 @st.cache
 def load_data():
 	data = pd.read_csv("train.csv")
