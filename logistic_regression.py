@@ -18,7 +18,7 @@ gender = 0
 p_class = 0
 p_class = 0
 gender = 0
-image = Image.open("Titanic.jpeg")
+image = Image.open("Titanic.jpg")
 st.image(image)
 @st.cache
 def load_data():
