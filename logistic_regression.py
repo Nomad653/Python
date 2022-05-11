@@ -1,6 +1,6 @@
 # %%
 import pandas as pd
-import os 
+from PIL import Image
 import numpy as np
 import streamlit as st
 from sklearn.preprocessing import LabelEncoder
@@ -18,7 +18,8 @@ gender = 0
 p_class = 0
 p_class = 0
 gender = 0
-
+image = Image.open("Titanic.jpeg")
+st.image(image)
 @st.cache
 def load_data():
 	data = pd.read_csv("train.csv")
