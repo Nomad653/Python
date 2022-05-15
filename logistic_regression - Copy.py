@@ -9,7 +9,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report
 # %% [markdown]
 # Data yuklenir
-# 
+# khxckzxjcb
 
 print(st.title("Titanik faciəsindən sağ çıxa bilərdinizmi?"))
 
