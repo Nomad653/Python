@@ -11,6 +11,7 @@ from sklearn.metrics import classification_report
 # Data yuklenir
 # 
 #Vusal
+#Vusal
 print(st.title("Titanik faciəsindən sağ çıxa bilərdinizmi?"))
 
 age = 0
