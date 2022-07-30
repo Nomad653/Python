@@ -10,7 +10,7 @@ from sklearn.metrics import classification_report
 # %% [markdown]
 # Data yuklenir
 # 
-
+#Vusal
 print(st.title("Titanik faciəsindən sağ çıxa bilərdinizmi?"))
 
 age = 0
