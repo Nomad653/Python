@@ -15,5 +15,8 @@ class Profile(models.Model):
     
 class Movie(models.Model):
     name = models.CharField(max_length=255)
-    description = models.CharField(max_length=1400)
+    description = models.TextField(blank=True,null=True,max_length=1400)
+    created = models.DateTimeField(auto_now_add=True)
+    uuid = models.UUIDField(default=uuid.uuid4)
+
     
